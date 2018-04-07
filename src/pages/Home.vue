@@ -24,6 +24,8 @@
   let signaturePad
   let revokeStep = 0
   let revokeStates = []
+
+  const ratio = 1
   const strokeWidths = {thin: [1, 6], thick: [2, 10]}
 
   export default {
@@ -45,32 +47,22 @@
       clear () {
         signaturePad.clear()
       },
-      render (dataURL) {
-        signaturePad._reset()
-
-        const img = new Image()
-        const ctx = this.$refs.canvas.getContext('2d')
-
-        img.src = dataURL
-        img.onload = () => ctx.drawImage(img, 0, 0, 655, 235)
-      },
       addRevokeState () {
         revokeStates = revokeStates.slice(revokeStep)
         revokeStates.unshift(signaturePad.toDataURL())
-
         revokeStep = 0
       },
       revoke () {
         this.clear()
 
         revokeStep = Math.min(revokeStates.length - 2, revokeStep)
-        this.render(revokeStates[++revokeStep])
+        signaturePad.fromDataURL(revokeStates[++revokeStep], {ratio})
       },
       cancelRevoke () {
         this.clear()
 
         revokeStep = Math.max(1, revokeStep)
-        this.render(revokeStates[--revokeStep])
+        signaturePad.fromDataURL(revokeStates[--revokeStep], {ratio})
       },
       erase () {
         signaturePad.minWidth = 10
