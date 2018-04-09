@@ -1,5 +1,6 @@
 <template>
   <div class="mainBox">
+    <img class="title" src="../assets/bt.png" alt="">
     <div class="sig-container">
       <div class="juan-container">
         <img class="zhou left" src="../assets/juanzhou_bian.png">
@@ -15,6 +16,33 @@
       <button @click="cancelRevoke">取消撤销</button>
       <button @click="erase">擦除</button>
     </div>
+    <div class="menu">
+      <ul>
+        <li class="menuPer">
+          <img src="../assets/xj.png" alt="">
+        </li>
+        <li class="menuPer">
+          <img src="../assets/bc.png" alt="">
+          <ul>
+            <li class="subMenu">
+              <img src="../assets/cu.png" alt="">
+            </li>
+            <li class="subMenu" style="transform: rotateZ(60deg)">
+              <img src="../assets/xi.png"  style="transform: rotateZ(-60deg)">
+            </li>
+          </ul>
+        </li>
+        <li class="menuPer">
+          <img src="../assets/bj.png" alt="">
+        </li>
+      </ul>
+      <div class="collect">
+        <img src="../assets/sc.png" alt="">
+      </div>
+      <div class="goBack">
+        <img src="../assets/fh.png" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,7 +54,7 @@
   let revokeStates = []
 
   const ratio = 1
-  const strokeWidths = {thin: [1, 6], thick: [2, 10]}
+  const strokeWidths = {thin: [1, 6], thick: [8, 20]}
 
   export default {
     name: 'home',
@@ -74,6 +102,10 @@
 </script>
 
 <style scoped lang="scss">
+  .mainBox {
+    text-align: center;
+  }
+
   .sig-container {
     width: 785px;
     margin: auto;
@@ -106,6 +138,52 @@
     height: 235px;
     position: absolute;
     background: #fff;
+  }
+
+  .menu {
+    position: relative;
+    .menuPer {
+      width: 263px;
+      height: 93px;
+      background: url("../assets/bjbg.png") no-repeat;
+      float: left;
+      & img {
+        left: 50%;
+        top: 50%;
+        transform: translate(-67%, 94%);
+      }
+      .subMenu {
+        width: 78px;
+        height: 77px;
+        background: url("../assets/qkbg.png") no-repeat;
+        float: left;
+      }
+    }
+    .collect {
+      width: 330px;
+      height: 195px;
+      background: url("../assets/scbg.png") no-repeat;
+      position: absolute;
+      right: 420px;
+      & img {
+        left: 50%;
+        top: 50%;
+        transform: translate(57%, 159%);
+      }
+    }
+    .goBack {
+      width: 127px;
+      height: 115px;
+      background: url("../assets/qkbg.png") no-repeat;
+      background-size: 98%;
+      position: absolute;
+      right: 20px;
+      & img {
+        left: 50%;
+        top: 50%;
+        transform: translate(-10%, 155%);
+      }
+    }
   }
 
 </style>
