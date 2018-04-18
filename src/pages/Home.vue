@@ -9,10 +9,6 @@
       </div>
       <canvas ref="canvas" width="655" height="235"></canvas>
 
-      <button @click="clear">清除</button>
-      <button @click="revoke">撤销</button>
-      <button @click="cancelRevoke">取消撤销</button>
-      <button @click="erase">擦除</button>
     </div>
     <div class="menu">
       <ul>
@@ -26,12 +22,30 @@
               <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
             <li class="subMenu" style="transform: rotateZ(60deg)">
-              <img src="../assets/xi.png" @click="setStrokeStyle('thin')" style="transform: rotateZ(-60deg)">
+              <img src="../assets/xi.png" @click="setStrokeStyle('thin')"
+                   style="transform: rotateZ(-60deg) translate(-119%, 64%)">
             </li>
           </ul>
         </li>
         <li class="menuPer">
           <img src="../assets/bj.png" alt="">
+          <ul>
+            <li class="subMenu">
+              <img src="../assets/qk.png" @click="clear" style="transform: translate(8%,43%);">
+            </li>
+            <li class="subMenu" style="transform: rotateZ(54deg)">
+              <img src="../assets/cch.png" @click="erase"
+                   style="transform: rotateZ(-54deg) translate(-29%, 28%)">
+            </li>
+            <li class="subMenu" style="transform: rotateZ(54deg)">
+              <img src="../assets/cx.png" @click="revoke"
+                   style="transform: rotateZ(-54deg) translate(-33%, 28%)">
+            </li>
+            <li class="subMenu" style="transform: rotateZ(84deg)">
+              <img src="../assets/qxcx.png" @click="cancelRevoke"
+                   style="transform: rotateZ(-84deg) translate(-41%, 17%)">
+            </li>
+          </ul>
         </li>
       </ul>
       <div class="collect">
@@ -140,21 +154,26 @@
 
   .menu {
     position: relative;
+    cursor: pointer;
     .menuPer {
-      width: 263px;
+      width: 380px;
       height: 93px;
       background: url("../assets/bjbg.png") no-repeat;
       float: left;
+      background-position: center;
       & img {
         left: 50%;
         top: 50%;
-        transform: translate(-67%, 94%);
+        transform: translate(-68%, 94%);
       }
       .subMenu {
-        width: 78px;
+        width: 74px;
         height: 77px;
         background: url("../assets/qkbg.png") no-repeat;
         float: left;
+        & img {
+          transform: translate(8%, 94%);
+        }
       }
     }
     .collect {
