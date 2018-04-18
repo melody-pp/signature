@@ -12,19 +12,21 @@
 
 <style>
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Microsoft YaHei', 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  body{
+
+  body {
     background: url("./assets/bg.jpg") no-repeat;
-    background-size:100%;
-    height: 100%;
-    width: 100%;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
     margin: 0;
     padding: 0;
   }
-  ul,li{
+
+  ul, li {
     list-style: none;
     margin: 0;
     padding: 0;

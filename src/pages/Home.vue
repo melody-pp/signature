@@ -9,8 +9,6 @@
       </div>
       <canvas ref="canvas" width="655" height="235"></canvas>
 
-      <button @click="setStrokeStyle('thin')">细</button>
-      <button @click="setStrokeStyle('thick')">粗</button>
       <button @click="clear">清除</button>
       <button @click="revoke">撤销</button>
       <button @click="cancelRevoke">取消撤销</button>
@@ -25,10 +23,10 @@
           <img src="../assets/bc.png" alt="">
           <ul>
             <li class="subMenu">
-              <img src="../assets/cu.png" alt="">
+              <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
             <li class="subMenu" style="transform: rotateZ(60deg)">
-              <img src="../assets/xi.png"  style="transform: rotateZ(-60deg)">
+              <img src="../assets/xi.png" @click="setStrokeStyle('thin')" style="transform: rotateZ(-60deg)">
             </li>
           </ul>
         </li>
