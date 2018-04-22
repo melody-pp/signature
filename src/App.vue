@@ -20,8 +20,6 @@
   body {
     background: url("./assets/bg.jpg") no-repeat;
     background-size: cover;
-    height: 100vh;
-    width: 100vw;
     margin: 0;
     padding: 0;
   }
@@ -30,5 +28,15 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: " ";
+  }
+
+  .clearfix:after {
+    clear: both;
   }
 </style>
