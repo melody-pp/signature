@@ -10,16 +10,31 @@
 </template>
 
 <script>
-
+  import $ from 'jquery'
+  import '../components/marquee'
   import Signature from '../components/Signature'
 
   export default {
-    name: "Exhibition",
+    name: 'Exhibition',
     components: {Signature},
+    data: () => ({
+      $mq: null
+    }),
     computed: {
-      sigList() {
+      sigList () {
         return this.$store.state.sigList
       }
+    },
+    mounted () {
+      this.$mq = $('.sig-list-wrapper').marquee({
+        speed: 120,
+        duplicated: true,
+        startVisible: true,
+        pauseOnHover: true,
+      })
+    },
+    beforeDestroy () {
+      this.$mq.marquee('destroy')
     }
   }
 </script>

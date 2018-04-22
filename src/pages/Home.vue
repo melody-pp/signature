@@ -69,61 +69,61 @@
       cvWidth: 655,
     }),
     computed: {
-      cvHeight() {
+      cvHeight () {
         return this.cvWidth * 0.3588
       }
     },
-    created() {
+    created () {
       this.cvWidth = window.innerWidth * 0.545833333
     },
-    mounted() {
+    mounted () {
       signaturePad = new SignaturePad(
         this.$refs.canvas,
         {minWidth: 1, maxWidth: 6, onEnd: this.addRevokeState}
       )
     },
     methods: {
-      setStrokeStyle(style) {
+      setStrokeStyle (style) {
         const [minWidth, maxWidth] = strokeWidths[style]
 
         signaturePad.minWidth = minWidth
         signaturePad.maxWidth = maxWidth
         signaturePad.penColor = '#000'
       },
-      clear() {
+      clear () {
         signaturePad.clear()
       },
-      addRevokeState() {
+      addRevokeState () {
         revokeStates = revokeStates.slice(revokeStep)
         revokeStates.unshift(signaturePad.toDataURL())
         revokeStep = 0
       },
-      revoke() {
+      revoke () {
         this.clear()
 
         revokeStep = Math.min(revokeStates.length - 2, revokeStep)
         signaturePad.fromDataURL(revokeStates[++revokeStep], {ratio})
       },
-      cancelRevoke() {
+      cancelRevoke () {
         this.clear()
 
         revokeStep = Math.max(1, revokeStep)
         signaturePad.fromDataURL(revokeStates[--revokeStep], {ratio})
       },
-      erase() {
+      erase () {
         signaturePad.minWidth = 10
         signaturePad.maxWidth = 10
         signaturePad.penColor = '#fff'
       },
-      goBack() {
+      goBack () {
         console.log('返回')
       },
-      addSig() {
+      addSig () {
         this.clear()
         revokeStep = 0
         revokeStates = []
       },
-      saveSig() {
+      saveSig () {
         this.$store.commit('addSig', signaturePad.toDataURL())
         this.$router.push('/exhibition')
       }

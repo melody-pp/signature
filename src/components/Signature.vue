@@ -11,9 +11,8 @@
 
 <script>
   export default {
-    name: "Signature",
+    name: 'Signature',
     props: ['sigUrl'],
-
   }
 </script>
 
@@ -35,17 +34,13 @@
 
     .zhou {
       height: 50vh;
-
       &.left {
         position: relative;
         margin-right: -1vh;
       }
-
       &.right {
         margin-left: -1vh;
       }
     }
   }
-
-
 </style>
