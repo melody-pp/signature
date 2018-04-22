@@ -26,15 +26,21 @@
       }
     },
     mounted () {
+      const len = this.sigList.length
+
+      if (len < 2) {
+        return
+      }
+
       this.$mq = $('.sig-list-wrapper').marquee({
         speed: 120,
-        duplicated: true,
+        duplicated: len > 2,
         startVisible: true,
         pauseOnHover: true,
       })
     },
     beforeDestroy () {
-      this.$mq.marquee('destroy')
+      this.$mq && this.$mq.marquee('destroy')
     }
   }
 </script>
@@ -44,6 +50,9 @@
     text-align: center;
     .title {
       width: 30vw;
+    }
+    .sig-list-wrapper {
+      overflow: hidden;
     }
     .sig-list-container {
       margin-top: 15vh;

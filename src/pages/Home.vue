@@ -1,13 +1,13 @@
 <template>
   <div class="mainBox">
     <img class="title" src="../assets/bt.png">
-    <div class="sig-container">
-      <div class="juan-container">
-        <img class="zhou left" src="../assets/juanzhou_bian.png">
+    <div ref="sig" class="sig-container">
+      <img class="zhou left" src="../assets/juanzhou_bian.png">
+      <div ref="juan" class="juan-wrapper">
         <img class="juan" src="../assets/juanzhou_zhong.png">
-        <img class="zhou right" src="../assets/juanzhou_bian.png">
+        <canvas ref="canvas" :width="cvWidth" :height="cvHeight"></canvas>
       </div>
-      <canvas ref="canvas" :width="cvWidth" :height="cvHeight"></canvas>
+      <img class="zhou right" src="../assets/juanzhou_bian.png">
     </div>
     <div class="menu">
       <ul class="clearfix">
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+  import { TimelineLite } from 'gsap'
   import SignaturePad from 'signature_pad'
 
   let signaturePad
@@ -122,10 +123,30 @@
         this.clear()
         revokeStep = 0
         revokeStates = []
+
+        const {juan, sig} = this.$refs
+        const timeline = new TimelineLite()
+
+        timeline
+          .set(juan, {width: 0})
+          .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 360})
+          .to(sig, 1, {autoAlpha: 1, scale: 1, y: 0, x: 0, rotation: 0})
+          .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
-        this.$store.commit('addSig', signaturePad.toDataURL())
-        this.$router.push('/exhibition')
+        const timeline = new TimelineLite({
+          onComplete: () => {
+            this.$store.commit('addSig', signaturePad.toDataURL())
+            this.$router.push('/exhibition')
+          }
+        })
+        const {juan, sig} = this.$refs
+
+        timeline
+          .to(juan, 2, {width: 0})
+          .to(sig, .8, {y: 100, rotation: 180})
+          .to(sig, 1.5, {scale: 0.5, autoAlpha: 0.5, y: 300})
+
       }
     }
   }
@@ -140,12 +161,15 @@
   }
 
   .sig-container {
+    font-size: 0;
     margin-top: -5vh;
     position: relative;
   }
 
-  .juan-container {
-    font-size: 0;
+  .juan-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
   }
 
   .juan {
@@ -165,7 +189,7 @@
 
   canvas {
     top: 7.1vw;
-    left: 22.75vw;
+    left: 2.75vw;
     width: 54.5833333vw;
     height: 19.5845vw;
     position: absolute;
@@ -225,5 +249,4 @@
       }
     }
   }
-
 </style>
