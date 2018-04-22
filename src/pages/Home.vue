@@ -54,7 +54,6 @@
 </template>
 
 <script>
-  import {sigList} from "../data";
   import SignaturePad from 'signature_pad'
 
   let signaturePad
@@ -120,11 +119,12 @@
         console.log('返回')
       },
       addSig() {
-        console.log('新建')
+        this.clear()
+        revokeStep = 0
+        revokeStates = []
       },
       saveSig() {
-        console.log('保存')
-        sigList.push(signaturePad.toDataURL());
+        this.$store.commit('addSig', signaturePad.toDataURL())
         this.$router.push('/exhibition')
       }
     }

@@ -1,23 +1,26 @@
 <template>
   <div class="mainBox">
     <img class="title" src="../assets/bt.png" @click="$router.push('/')">
-    <div class="sig-list-container">
-      <Signature v-for="sigUrl of sigList" :sigUrl="sigUrl" class="signature"/>
+    <div class="sig-list-wrapper">
+      <div class="sig-list-container" :style="{width: sigList.length*120+'vh'}">
+        <Signature v-for="sigUrl of sigList" :sigUrl="sigUrl" class="signature"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import {sigList} from "../data";
 
   import Signature from '../components/Signature'
 
   export default {
     name: "Exhibition",
     components: {Signature},
-    data: () => ({
-      sigList
-    })
+    computed: {
+      sigList() {
+        return this.$store.state.sigList
+      }
+    }
   }
 </script>
 
@@ -27,12 +30,15 @@
     .title {
       width: 30vw;
     }
+    .sig-list-wrapper {
+      overflow: auto;
+    }
     .sig-list-container {
       margin-top: 15vh;
     }
     .signature {
       margin: 0 10vh;
+      float: left;
     }
-
   }
 </style>

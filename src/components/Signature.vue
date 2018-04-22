@@ -12,13 +12,14 @@
 <script>
   export default {
     name: "Signature",
-    props: ['sigUrl']
+    props: ['sigUrl'],
+
   }
 </script>
 
 <style scoped lang="scss">
   .sig-container {
-    position: absolute;
+    position: relative;
     > img {
       top: 10.4vh;
       left: 9vh;

@@ -1,3 +1,0 @@
-const sigList = [];
-
-export {sigList}
