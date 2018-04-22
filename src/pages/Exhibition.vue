@@ -45,9 +45,6 @@
     .title {
       width: 30vw;
     }
-    .sig-list-wrapper {
-      overflow: auto;
-    }
     .sig-list-container {
       margin-top: 15vh;
     }
