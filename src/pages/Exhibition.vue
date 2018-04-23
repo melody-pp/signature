@@ -1,6 +1,6 @@
 <template>
   <div class="mainBox" @click="$router.push('/')">
-    <img class="title" src="../assets/bt.png" @click="$router.push('/')">
+    <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
     <div class="sig-list-wrapper">
       <div class="sig-list-container" :style="{width: sigList.length*120+'vh'}">
         <Signature v-for="(sigUrl,index) of sigList" :sigUrl="sigUrl" :key="index" class="signature"/>
@@ -54,7 +54,7 @@
     width: 100vw;
     height: 100vh;
     .title {
-      width: 30vw;
+      width: 28vw;
       margin-top: 6vh;
       margin-bottom: -5vh;
     }
