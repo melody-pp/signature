@@ -155,6 +155,9 @@
 <style scoped lang="scss">
   .mainBox {
     text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
     .title {
       width: 30vw;
     }
@@ -162,8 +165,6 @@
 
   .sig-container {
     font-size: 0;
-    margin-top: -5vh;
-    position: relative;
   }
 
   .juan-wrapper {
@@ -197,8 +198,7 @@
   }
 
   .menu {
-    position: relative;
-    margin-top: -1vh;
+    margin-top: 8vh;
     > ul > li {
       width: 20vw;
       line-height: 12vw;
