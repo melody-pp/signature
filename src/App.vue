@@ -17,6 +17,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     background: url("./assets/bg.jpg") no-repeat;
     background-size: cover;
