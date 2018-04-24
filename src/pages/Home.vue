@@ -25,7 +25,7 @@
             </li>
           </ul>
         </li>
-        <li class="menuPer">
+        <li class="menuPer edit">
           <img src="../assets/bj.png">
           <ul>
             <li class="subMenu">
@@ -154,10 +154,10 @@
 
 <style scoped lang="scss">
   .mainBox {
-    text-align: center;
     top: 50%;
-    transform: translateY(-50%);
     position: absolute;
+    text-align: center;
+    transform: translateY(-50%);
     .title {
       width: 30vw;
     }
@@ -168,9 +168,9 @@
   }
 
   .juan-wrapper {
-    display: inline-block;
     overflow: hidden;
     position: relative;
+    display: inline-block;
   }
 
   .juan {
@@ -204,15 +204,17 @@
       line-height: 12vw;
       float: left;
       background-size: contain;
-      background: center no-repeat;
-      img {
+      background-repeat: no-repeat;
+      background-position: center center;
+      > img {
+        width: 30%;
         cursor: pointer;
       }
     }
     .menuPer {
       position: relative;
       background-image: url("../assets/bjbg.png");
-      & img {
+      img {
         left: 50%;
         top: 50%;
         transform: translate(-68%, 50%);
@@ -224,28 +226,44 @@
       .subMenu {
         width: 5vw;
         background-size: contain;
-        background: url("../assets/qkbg.png") center no-repeat;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url("../assets/qkbg.png");
         float: left;
-        & img {
-          transform: translate(0%, 40%)
+        img {
+          width: 35%;
+          transform: translate(0%, 35%)
+        }
+      }
+      &.edit {
+        .subMenu img {
+          width: 65%;
         }
       }
     }
     .collect {
       height: 12vw;
-      background: url("../assets/scbg.png") center no-repeat;
-      & img {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-image: url("../assets/scbg.png");
+      img {
         left: 50%;
         top: 50%;
-        transform: translate(57%, 50%);
+        width: 30%;
+        transform: translate(50%, 40%);
       }
     }
     .goBack {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
       background-image: url("../assets/qkbg.png");
-      & img {
+      img {
         left: 50%;
         top: 50%;
-        transform: translate(0%, 50%);
+        width: 30%;
+        transform: translate(0%, 40%);
       }
     }
   }
