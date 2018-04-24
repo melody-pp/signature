@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox">
+  <div class="mainBox" :class="{center}">
     <img class="title" src="../assets/bt.png">
     <div ref="sig" class="sig-container">
       <img class="zhou left" src="../assets/juanzhou_bian.png">
@@ -69,7 +69,8 @@
     data: () => ({
       cvWidth: 655,
       showEdit: false,
-      showBichu: false
+      showBichu: false,
+      center: false
     }),
     computed: {
       cvHeight () {
@@ -78,6 +79,11 @@
     },
     created () {
       this.cvWidth = window.innerWidth * 0.545833333
+      this.center = (window.innerWidth / window.innerHeight) < 1.667
+
+      window.addEventListener('resize', () => {
+        this.center = (window.innerWidth / window.innerHeight) < 1.667
+      })
     },
     mounted () {
       signaturePad = new SignaturePad(
@@ -156,13 +162,16 @@
 
 <style scoped lang="scss">
   .mainBox {
-    top: 50%;
-    position: absolute;
     text-align: center;
-    transform: translateY(-50%);
     .title {
       width: 30vw;
     }
+  }
+
+  .center {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
   }
 
   .sig-container {
