@@ -15,8 +15,8 @@
           <img src="../assets/xj.png" @click="addSig()">
         </li>
         <li class="menuPer">
-          <img src="../assets/bc.png">
-          <ul>
+          <img src="../assets/bc.png" @click="showBichu=!showBichu">
+          <ul v-show="showBichu">
             <li class="subMenu">
               <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
@@ -26,8 +26,8 @@
           </ul>
         </li>
         <li class="menuPer edit">
-          <img src="../assets/bj.png">
-          <ul>
+          <img src="../assets/bj.png" @click="showEdit=!showEdit">
+          <ul v-show="showEdit">
             <li class="subMenu">
               <img src="../assets/qk.png" @click="clear">
             </li>
@@ -68,6 +68,8 @@
     name: 'home',
     data: () => ({
       cvWidth: 655,
+      showEdit: false,
+      showBichu: false
     }),
     computed: {
       cvHeight () {
@@ -209,14 +211,14 @@
       > img {
         width: 30%;
         cursor: pointer;
+        position: relative;
+        z-index: 2;
       }
     }
     .menuPer {
       position: relative;
       background-image: url("../assets/bjbg.png");
-      img {
-        left: 50%;
-        top: 50%;
+      > img {
         transform: translate(-68%, 50%);
       }
       > ul {
@@ -232,6 +234,7 @@
         float: left;
         img {
           width: 35%;
+          cursor: pointer;
           transform: translate(0%, 35%)
         }
       }
@@ -248,9 +251,8 @@
       background-position: center center;
       background-image: url("../assets/scbg.png");
       img {
-        left: 50%;
-        top: 50%;
         width: 30%;
+        cursor: pointer;
         transform: translate(50%, 40%);
       }
     }
@@ -260,9 +262,8 @@
       background-position: center center;
       background-image: url("../assets/qkbg.png");
       img {
-        left: 50%;
-        top: 50%;
         width: 30%;
+        cursor: pointer;
         transform: translate(0%, 40%);
       }
     }
