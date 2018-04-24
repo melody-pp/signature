@@ -62,7 +62,7 @@
   let revokeStates = []
 
   const ratio = 1
-  const strokeWidths = {thin: [1, 6], thick: [8, 20]}
+  const strokeWidths = {thin: [1, 6], thick: [2, 12]}
 
   export default {
     name: 'home',
