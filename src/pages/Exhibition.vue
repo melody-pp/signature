@@ -18,25 +18,24 @@
     name: 'Exhibition',
     components: {Signature},
     data: () => ({
-      $mq: null
+      $mq: null,
+      sigList: []
     }),
-    computed: {
-      sigList () {
-        return this.$store.state.sigList
-      }
-    },
     mounted () {
-      const len = this.sigList.length
+      this.$axios.post('/todo get').then(data => {
+        this.sigList = data.data
+        const len = this.sigList.length
 
-      if (len < 2) {
-        return
-      }
+        if (len < 2) {
+          return
+        }
 
-      this.$mq = $('.sig-list-wrapper').marquee({
-        speed: 120,
-        duplicated: len > 2,
-        startVisible: true,
-        pauseOnHover: true,
+        this.$mq = $('.sig-list-wrapper').marquee({
+          speed: 120,
+          duplicated: len > 2,
+          startVisible: true,
+          pauseOnHover: true,
+        })
       })
     },
     beforeDestroy () {

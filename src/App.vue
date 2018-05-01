@@ -6,7 +6,13 @@
 
 <script>
   export default {
-    name: 'App'
+    name: 'App',
+    mounted () {
+      if (window.innerWidth < window.innerHeight) {
+        alert('请使用横屏浏览！')
+        location.reload()
+      }
+    }
   }
 </script>
 

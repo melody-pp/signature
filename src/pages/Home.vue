@@ -46,7 +46,7 @@
           <img src="../assets/sc.png" @click="saveSig">
         </li>
         <!--<li class="goBack">-->
-          <!--<img src="../assets/fh.png" @click="goBack">-->
+        <!--<img src="../assets/fh.png" @click="goBack">-->
         <!--</li>-->
       </ul>
     </div>
@@ -167,7 +167,8 @@
       saveSig () {
         const timeline = new TimelineLite({
           onComplete: () => {
-            this.$store.commit('addSig', signaturePad.toDataURL())
+            // this.$store.commit('addSig', signaturePad.toDataURL())
+            this.$axios.post('/todo save', {dataURL: signaturePad.toDataURL()})
             this.$router.push('/exhibition')
           }
         })
