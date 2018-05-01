@@ -14,10 +14,10 @@
         <li class="menuPer">
           <img src="../assets/xj.png" @click="addSig()">
         </li>
-        <li class="menuPer">
+        <li class="menuPer bc">
           <img src="../assets/bc.png" @click="showBichu=!showBichu">
           <ul v-show="showBichu">
-            <li class="subMenu">
+            <li class="subMenu active">
               <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
             <li class="subMenu">
@@ -28,7 +28,7 @@
         <li class="menuPer edit">
           <img src="../assets/bj.png" @click="showEdit=!showEdit">
           <ul v-show="showEdit">
-            <li class="subMenu">
+            <li class="subMenu active">
               <img src="../assets/qk.png" @click="clear">
             </li>
             <li class="subMenu">
@@ -45,9 +45,9 @@
         <li class="collect">
           <img src="../assets/sc.png" @click="saveSig">
         </li>
-        <li class="goBack">
-          <img src="../assets/fh.png" @click="goBack">
-        </li>
+        <!--<li class="goBack">-->
+          <!--<img src="../assets/fh.png" @click="goBack">-->
+        <!--</li>-->
       </ul>
     </div>
   </div>
@@ -90,6 +90,29 @@
         this.$refs.canvas,
         {minWidth: 1, maxWidth: 6, onEnd: this.addRevokeState}
       )
+      const $menus = document.querySelectorAll('.menuPer')
+      const $menuImgs = document.querySelectorAll('.menuPer>img')
+      const fn = function () {
+        $menus.forEach($menu => $menu.classList.remove('active'))
+        this.parentNode.classList.add('active')
+      }
+      $menuImgs.forEach($menuImg => $menuImg.addEventListener('click', fn))
+
+      const $subMenusBc = document.querySelectorAll('.bc .subMenu')
+      const $subMenuImgsBc = document.querySelectorAll('.bc .subMenu>img')
+      const subFnBc = function () {
+        $subMenusBc.forEach($menu => $menu.classList.remove('active'))
+        this.parentNode.classList.add('active')
+      }
+      $subMenuImgsBc.forEach($menuImg => $menuImg.addEventListener('click', subFnBc))
+
+      const $subMenusedit = document.querySelectorAll('.edit .subMenu')
+      const $subMenuImgsedit = document.querySelectorAll('.edit .subMenu>img')
+      const subFnedit = function () {
+        $subMenusedit.forEach($menu => $menu.classList.remove('active'))
+        this.parentNode.classList.add('active')
+      }
+      $subMenuImgsedit.forEach($menuImg => $menuImg.addEventListener('click', subFnedit))
     },
     methods: {
       setStrokeStyle (style) {
@@ -152,8 +175,8 @@
 
         timeline
           .to(juan, 2, {width: 0})
-          .to(sig, .8, {y: 100, rotation: 180})
-          .to(sig, 1.5, {scale: 0.5, autoAlpha: 0.5, y: 300})
+          .to(sig, .8, {y: '30%', rotation: 180})
+          .to(sig, 1.5, {scale: 0.5, autoAlpha: 0, y: '80%', x: '29%'})
 
       }
     }
@@ -211,8 +234,8 @@
   .menu {
     margin-top: 8vh;
     > ul > li {
-      width: 20vw;
-      line-height: 12vw;
+      width: 21vw;
+      line-height: 10vw;
       float: left;
       background-size: contain;
       background-repeat: no-repeat;
@@ -227,6 +250,9 @@
     .menuPer {
       position: relative;
       background-image: url("../assets/bjbg.png");
+      &.active {
+        background-image: url("../assets/bjbg2.png");
+      }
       > img {
         transform: translate(-68%, 50%);
       }
@@ -241,6 +267,9 @@
         background-position: center center;
         background-image: url("../assets/qkbg.png");
         float: left;
+        &.active {
+          background-image: url("../assets/qkbg2.png");
+        }
         img {
           width: 35%;
           cursor: pointer;
@@ -254,6 +283,7 @@
       }
     }
     .collect {
+      width: 24vw;
       height: 12vw;
       background-size: contain;
       background-repeat: no-repeat;
@@ -270,8 +300,9 @@
       background-repeat: no-repeat;
       background-position: center center;
       background-image: url("../assets/qkbg.png");
+      width: 13vw;
       img {
-        width: 30%;
+        width: 45%;
         cursor: pointer;
         transform: translate(0%, 40%);
       }

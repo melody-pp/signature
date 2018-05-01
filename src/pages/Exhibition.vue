@@ -2,7 +2,7 @@
   <div class="mainBox" @click="$router.push('/')">
     <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
     <div class="sig-list-wrapper">
-      <div class="sig-list-container" :style="{width: sigList.length*120+'vh'}">
+      <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">
         <Signature v-for="(sigUrl,index) of sigList" :sigUrl="sigUrl" :key="index" class="signature"/>
       </div>
     </div>
