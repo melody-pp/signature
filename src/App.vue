@@ -52,4 +52,10 @@
   .clearfix:after {
     clear: both;
   }
+
+  .center {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+  }
 </style>

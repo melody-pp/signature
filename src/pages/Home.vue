@@ -70,7 +70,8 @@
       cvWidth: 655,
       showEdit: false,
       showBichu: false,
-      center: false
+      center: false,
+      thumb: ''
     }),
     computed: {
       cvHeight () {
@@ -168,7 +169,7 @@
         const timeline = new TimelineLite({
           onComplete: () => {
             // this.$store.commit('addSig', signaturePad.toDataURL())
-            this.$axios.post('/todo save', {dataURL: signaturePad.toDataURL()})
+            this.$axios.post('/qmadmin/index.php/Api/index', {thumb: signaturePad.toDataURL()})
             this.$router.push('/exhibition')
           }
         })
@@ -190,12 +191,6 @@
     .title {
       width: 27vw;
     }
-  }
-
-  .center {
-    top: 50%;
-    position: absolute;
-    transform: translateY(-50%);
   }
 
   .sig-container {

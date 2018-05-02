@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox" @click="$router.push('/')">
+  <div class="mainBox center" @click="$router.push('/')">
     <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
     <div class="sig-list-wrapper">
       <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">
@@ -22,7 +22,8 @@
       sigList: []
     }),
     mounted () {
-      this.$axios.post('/todo get').then(data => {
+      this.$axios.post('/qmadmin/index.php/Api/getalldata').then(data => {
+        console.log(data.data)
         this.sigList = data.data
         const len = this.sigList.length
 
