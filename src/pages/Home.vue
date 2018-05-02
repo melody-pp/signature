@@ -160,8 +160,8 @@
 
         timeline
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 360})
-          .to(sig, 1, {autoAlpha: 1, scale: 1, y: 0, x: 0, rotation: 0})
+          .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 0})
+          .to(sig, 1, {autoAlpha: 1, scale: 0.9, y: 0, x: 0, rotation: 0})
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
@@ -176,8 +176,8 @@
 
         timeline
           .to(juan, 2, {width: 0})
-          .to(sig, .8, {scale: 0.4, y: '66%', x: '27%', rotation: 0})
-          .to(sig, 1.5, {scale: 0.1, autoAlpha: 0, y: '66%', x: '27%'})
+          .to(sig, .8, {scale: 0.2, y: '66%', x: '28%', rotation: 0})
+          .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '28%'})
 
       }
     }
@@ -256,7 +256,7 @@
         background-image: url("../assets/bjbg2.png");
       }
       > img {
-        transform: translate(-68%, 50%);
+        transform: translate(-68%, 42%);
       }
       > ul {
         position: absolute;
@@ -275,7 +275,7 @@
         img {
           width: 32%;
           cursor: pointer;
-          transform: translate(0%, 35%)
+          transform: translate(0%, 25%)
         }
       }
       &.edit {
