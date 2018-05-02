@@ -176,8 +176,8 @@
 
         timeline
           .to(juan, 2, {width: 0})
-          .to(sig, .8, {y: '30%', rotation: 180})
-          .to(sig, 1.5, {scale: 0.5, autoAlpha: 0, y: '80%', x: '29%'})
+          .to(sig, .8, {scale: 0.4, y: '66%', x: '27%', rotation: 0})
+          .to(sig, 1.5, {scale: 0.1, autoAlpha: 0, y: '66%', x: '27%'})
 
       }
     }
@@ -188,7 +188,7 @@
   .mainBox {
     text-align: center;
     .title {
-      width: 30vw;
+      width: 27vw;
     }
   }
 
@@ -233,16 +233,17 @@
   }
 
   .menu {
-    margin-top: 8vh;
+    margin-top: 2vh;
+    padding: 0 14.5vw;
     > ul > li {
-      width: 21vw;
-      line-height: 10vw;
+      width: 17vw;
+      line-height: 8vw;
       float: left;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
       > img {
-        width: 30%;
+        width: 25%;
         cursor: pointer;
         position: relative;
         z-index: 2;
@@ -259,10 +260,10 @@
       }
       > ul {
         position: absolute;
-        top: -5vw;
+        top: -3.8vw;
       }
       .subMenu {
-        width: 5vw;
+        width: 4vw;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
@@ -272,7 +273,7 @@
           background-image: url("../assets/qkbg2.png");
         }
         img {
-          width: 35%;
+          width: 32%;
           cursor: pointer;
           transform: translate(0%, 35%)
         }
@@ -284,14 +285,15 @@
       }
     }
     .collect {
-      width: 24vw;
-      height: 12vw;
+      width: 20vw;
+      height: 8.5vw;
+      line-height: 8.5vw;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
       background-image: url("../assets/scbg.png");
       img {
-        width: 30%;
+        width: 22%;
         cursor: pointer;
         transform: translate(50%, 40%);
       }
