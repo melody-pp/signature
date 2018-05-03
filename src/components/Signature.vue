@@ -20,10 +20,11 @@
   .sig-container {
     position: relative;
     > img {
-      top: 10.4vh;
-      left: 9vh;
+      top: 10.6vh;
+      left: 8.9vh;
       height: 29vh;
       position: absolute;
+      background: #fff;
     }
   }
 
