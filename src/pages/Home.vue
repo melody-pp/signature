@@ -54,6 +54,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import { TimelineLite } from 'gsap'
   import SignaturePad from 'signature_pad'
 
@@ -91,31 +92,18 @@
         this.$refs.canvas,
         {minWidth: 1, maxWidth: 6, onEnd: this.addRevokeState}
       )
-      const $menus = document.querySelectorAll('.menuPer')
-      const $menuImgs = document.querySelectorAll('.menuPer>img')
-      const fn = function () {
-        $menus.forEach($menu => $menu.classList.remove('active'))
-        this.parentNode.classList.add('active')
-      }
-      $menuImgs.forEach($menuImg => $menuImg.addEventListener('click', fn))
 
-      const $subMenusBc = document.querySelectorAll('.bc .subMenu')
-      const $subMenuImgsBc = document.querySelectorAll('.bc .subMenu>img')
-      const subFnBc = function () {
-        $subMenusBc.forEach($menu => $menu.classList.remove('active'))
-        this.parentNode.classList.add('active')
-      }
-      $subMenuImgsBc.forEach($menuImg => $menuImg.addEventListener('click', subFnBc))
-
-      const $subMenusedit = document.querySelectorAll('.edit .subMenu')
-      const $subMenuImgsedit = document.querySelectorAll('.edit .subMenu>img')
-      const subFnedit = function () {
-        $subMenusedit.forEach($menu => $menu.classList.remove('active'))
-        this.parentNode.classList.add('active')
-      }
-      $subMenuImgsedit.forEach($menuImg => $menuImg.addEventListener('click', subFnedit))
+      this.bindEvent($('.menuPer'), $('.menuPer>img'))
+      this.bindEvent($('.bc .subMenu'), $('.bc .subMenu>img'))
+      this.bindEvent($('.edit .subMenu'), $('.edit .subMenu>img'))
     },
     methods: {
+      bindEvent ($parents, $imgs) {
+        $imgs.on('click', function () {
+          $parents.removeClass('active')
+          $(this).parent().addClass('active')
+        })
+      },
       setStrokeStyle (style) {
         const [minWidth, maxWidth] = strokeWidths[style]
 
@@ -157,9 +145,7 @@
         revokeStates = []
 
         const {juan, sig} = this.$refs
-        const timeline = new TimelineLite()
-
-        timeline
+        new TimelineLite()
           .set(juan, {width: 0})
           .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 0})
           .to(sig, 1, {autoAlpha: 1, scale: 0.9, y: 0, x: 0, rotation: 0})
@@ -169,7 +155,7 @@
         this.$axios.post('/qmadmin/index.php/Api/index', {
           thumb: signaturePad.toDataURL()
         })
-        
+
         const {juan, sig} = this.$refs
         new TimelineLite({
           onComplete: () => this.$router.push('/exhibition')
