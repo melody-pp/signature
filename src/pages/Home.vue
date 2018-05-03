@@ -93,16 +93,13 @@
         {minWidth: 1, maxWidth: 6, onEnd: this.addRevokeState}
       )
 
-      this.bindEvent($('.menuPer'), $('.menuPer>img'))
+      // this.bindEvent($('.menuPer'), $('.menuPer>img'))
       this.bindEvent($('.subMenu'), $('.subMenu>img'))
-      // this.bindEvent($('.edit .subMenu'), $('.edit .subMenu>img'))
     },
     methods: {
       bindEvent ($parents, $imgs) {
         $imgs.on('click', function () {
           $parents.removeClass('active')
-          $parents.siblings().removeClass('active')
-          $parents.siblings().children().removeClass('active')
           $(this).parent().addClass('active')
         })
       },
@@ -115,6 +112,7 @@
       },
       clear () {
         signaturePad.clear()
+        this.addRevokeState()
       },
       addRevokeState () {
         revokeStates = revokeStates.slice(revokeStep)
@@ -122,14 +120,12 @@
         revokeStep = 0
       },
       revoke () {
-        this.clear()
-
+        signaturePad.clear()
         revokeStep = Math.min(revokeStates.length - 2, revokeStep)
         signaturePad.fromDataURL(revokeStates[++revokeStep], {ratio})
       },
       cancelRevoke () {
-        this.clear()
-
+        signaturePad.clear()
         revokeStep = Math.max(1, revokeStep)
         signaturePad.fromDataURL(revokeStates[--revokeStep], {ratio})
       },
@@ -142,7 +138,7 @@
         console.log('返回')
       },
       addSig () {
-        this.clear()
+        signaturePad.clear()
         revokeStep = 0
         revokeStates = []
 
