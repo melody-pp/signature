@@ -6,6 +6,7 @@ import Exhibition from '@/pages/Exhibition'
 Vue.use(Router)
 
 export default new Router({
+  base:'/signature/',
   routes: [
     {
       path: '/',
