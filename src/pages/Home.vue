@@ -166,19 +166,14 @@
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
-        const {juan, sig, canvas} = this.$refs
-
-        canvas.toBlob(blob => {
-          const data = new FormData()
-          data.append('file', blob)
-          this.$axios.post('/qmadmin/index.php/Api/index', data)
+        this.$axios.post('/qmadmin/index.php/Api/index', {
+          thumb: signaturePad.toDataURL()
         })
-
-        const timeline = new TimelineLite({
+        
+        const {juan, sig} = this.$refs
+        new TimelineLite({
           onComplete: () => this.$router.push('/exhibition')
-        })
-        timeline
-          .to(juan, 2, {width: 0})
+        }).to(juan, 2, {width: 0})
           .to(sig, .8, {scale: 0.2, y: '66%', x: '28%', rotation: 0})
           .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '28%'})
       }
