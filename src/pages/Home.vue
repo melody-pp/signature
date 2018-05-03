@@ -15,8 +15,8 @@
           <img src="../assets/xj.png" @click="addSig()">
         </li>
         <li class="menuPer bc">
-          <img src="../assets/bc.png" @click="showBichu=!showBichu">
-          <ul v-show="showBichu">
+          <img src="../assets/bc.png">
+          <ul>
             <li class="subMenu">
               <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
@@ -26,8 +26,8 @@
           </ul>
         </li>
         <li class="menuPer edit">
-          <img src="../assets/bj.png" @click="showEdit=!showEdit">
-          <ul v-show="showEdit">
+          <img src="../assets/bj.png">
+          <ul>
             <li class="subMenu">
               <img src="../assets/qk.png" @click="clear">
             </li>
@@ -94,13 +94,15 @@
       )
 
       this.bindEvent($('.menuPer'), $('.menuPer>img'))
-      this.bindEvent($('.bc .subMenu'), $('.bc .subMenu>img'))
-      this.bindEvent($('.edit .subMenu'), $('.edit .subMenu>img'))
+      this.bindEvent($('.subMenu'), $('.subMenu>img'))
+      // this.bindEvent($('.edit .subMenu'), $('.edit .subMenu>img'))
     },
     methods: {
       bindEvent ($parents, $imgs) {
         $imgs.on('click', function () {
           $parents.removeClass('active')
+          $parents.siblings().removeClass('active')
+          $parents.siblings().children().removeClass('active')
           $(this).parent().addClass('active')
         })
       },
