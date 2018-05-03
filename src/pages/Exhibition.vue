@@ -3,7 +3,7 @@
     <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
     <div class="sig-list-wrapper">
       <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">
-        <Signature v-for="(sigUrl,index) of sigList" :sigUrl="sigUrl" :key="index" class="signature"/>
+        <Signature v-for="sig of sigList" :sigUrl="sig.dataurl" :key="sig.id" class="signature"/>
       </div>
     </div>
   </div>
@@ -23,7 +23,6 @@
     }),
     mounted () {
       this.$axios.post('/qmadmin/index.php/Api/getalldata').then(data => {
-        console.log(data.data)
         this.sigList = data.data
         const len = this.sigList.length
 
