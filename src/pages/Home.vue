@@ -17,7 +17,7 @@
         <li class="menuPer bc">
           <img src="../assets/bc.png" @click="showBichu=!showBichu">
           <ul v-show="showBichu">
-            <li class="subMenu active">
+            <li class="subMenu">
               <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
             <li class="subMenu">
@@ -28,7 +28,7 @@
         <li class="menuPer edit">
           <img src="../assets/bj.png" @click="showEdit=!showEdit">
           <ul v-show="showEdit">
-            <li class="subMenu active">
+            <li class="subMenu">
               <img src="../assets/qk.png" @click="clear">
             </li>
             <li class="subMenu">
