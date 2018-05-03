@@ -30,11 +30,13 @@
           return
         }
 
-        this.$mq = $('.sig-list-wrapper').marquee({
-          speed: 120,
-          duplicated: len > 2,
-          startVisible: true,
-          pauseOnHover: true,
+        this.$nextTick(() => {
+          this.$mq = $('.sig-list-wrapper').marquee({
+            speed: 120,
+            duplicated: len > 2,
+            startVisible: true,
+            pauseOnHover: true,
+          })
         })
       })
     },
