@@ -166,20 +166,21 @@
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
-        const timeline = new TimelineLite({
-          onComplete: () => {
-            // this.$store.commit('addSig', signaturePad.toDataURL())
-            this.$axios.post('/qmadmin/index.php/Api/index', {thumb: signaturePad.toDataURL()})
-            this.$router.push('/exhibition')
-          }
-        })
-        const {juan, sig} = this.$refs
+        const {juan, sig, canvas} = this.$refs
 
+        canvas.toBlob(blob => {
+          const data = new FormData()
+          data.append('file', blob)
+          this.$axios.post('/qmadmin/index.php/Api/index', data)
+        })
+
+        const timeline = new TimelineLite({
+          onComplete: () => this.$router.push('/exhibition')
+        })
         timeline
           .to(juan, 2, {width: 0})
           .to(sig, .8, {scale: 0.2, y: '66%', x: '28%', rotation: 0})
           .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '28%'})
-
       }
     }
   }
