@@ -35,7 +35,7 @@
             speed: 120,
             duplicated: len > 2,
             startVisible: true,
-            pauseOnHover: true,
+            // pauseOnHover: true,
           })
         })
       })

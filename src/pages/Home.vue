@@ -17,11 +17,11 @@
         <li class="menuPer bc">
           <img src="../assets/bc.png">
           <ul>
-            <li class="subMenu">
-              <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
+            <li class="subMenu active">
+              <img src="../assets/xi.png" @click="setStrokeStyle('thin')">
             </li>
             <li class="subMenu">
-              <img src="../assets/xi.png" @click="setStrokeStyle('thin')">
+              <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
             </li>
           </ul>
         </li>
@@ -63,7 +63,7 @@
   let revokeStates = []
 
   const ratio = 1
-  const strokeWidths = {thin: [1, 6], thick: [2, 12]}
+  const strokeWidths = {thin: [1, 6], thick: [3, 13]}
 
   export default {
     name: 'home',
@@ -189,6 +189,7 @@
 
   .zhou {
     width: 3.5vw;
+    z-index: 5;
     &.left {
       position: relative;
       margin-right: -.5vw;
