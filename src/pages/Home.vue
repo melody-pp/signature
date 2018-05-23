@@ -18,32 +18,37 @@
           <img src="../assets/bc.png">
           <ul>
             <li class="subMenu active">
-              <img src="../assets/xi.png" @click="setStrokeStyle('thin')">
+              <img v-show="active" src="../assets/xi.png" @click="setStrokeStyle('thin')">
+              <img v-show="!active" src="../assets/xi2.png" @click="setStrokeStyle('thin')">
             </li>
             <li class="subMenu">
-              <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
+              <img v-show="active" src="../assets/cu.png" @click="setStrokeStyle('thick')">
+              <img v-show="!active" src="../assets/cu2.png" @click="setStrokeStyle('thick')">
             </li>
           </ul>
         </li>
         <li class="menuPer edit">
           <img src="../assets/bj.png">
-          <ul>
+          <ul>r
             <li class="subMenu">
-              <img src="../assets/qk.png" @click="clear">
+              <img v-show="active" src="../assets/qk.png" @click="clear">
+              <img v-show="!active" src="../assets/qk2.png" @click="clear">
             </li>
             <li class="subMenu">
-              <img src="../assets/cch.png" @click="erase">
+              <img v-show="active" src="../assets/cch.png" @click="erase">
+              <img v-show="!active" src="../assets/cch2.png" @click="erase">
             </li>
             <li class="subMenu">
-              <img src="../assets/cx.png" @click="revoke">
+              <img v-show="active" src="../assets/cx.png" @click="revoke">
+              <img v-show="!active" src="../assets/cx2.png" @click="revoke">
             </li>
             <li class="subMenu">
-              <img src="../assets/qxcx.png" @click="cancelRevoke">
+              <img v-show="active" src="../assets/qxcx.png" @click="cancelRevoke">
+              <img v-show="!active" src="../assets/qxcx2.png" @click="cancelRevoke">
             </li>
           </ul>
         </li>
-        <li class="collect">
-          <img src="../assets/sc.png" @click="saveSig">
+        <li class="collect" @click="saveSig">r
         </li>
         <!--<li class="goBack">-->
         <!--<img src="../assets/fh.png" @click="goBack">-->
@@ -72,7 +77,8 @@
       showEdit: false,
       showBichu: false,
       center: false,
-      thumb: ''
+      thumb: '',
+      active: true
     }),
     computed: {
       cvHeight () {
@@ -109,6 +115,7 @@
         signaturePad.minWidth = minWidth
         signaturePad.maxWidth = maxWidth
         signaturePad.penColor = '#000'
+        this.active = false
       },
       clear () {
         signaturePad.clear()
@@ -169,7 +176,8 @@
   .mainBox {
     text-align: center;
     .title {
-      width: 27vw;
+      width: 20vw;
+      margin-top: 3vw;
     }
   }
 
@@ -199,6 +207,12 @@
     }
   }
 
+  .bc {
+    ul {
+      left: 4.5vw;
+    }
+  }
+
   canvas {
     top: 7.1vw;
     left: 2.75vw;
@@ -209,7 +223,7 @@
   }
 
   .menu {
-    margin-top: 2vh;
+    margin-top: 2vw;
     padding: 0 14.5vw;
     > ul > li {
       width: 17vw;
@@ -232,11 +246,11 @@
         background-image: url("../assets/bjbg2.png");
       }
       > img {
-        transform: translate(-68%, 42%);
+        transform: translate(-2%, 42%);
       }
       > ul {
         position: absolute;
-        top: -3.8vw;
+        top: -5vw;
       }
       .subMenu {
         width: 4vw;
@@ -249,9 +263,9 @@
           background-image: url("../assets/qkbg2.png");
         }
         img {
-          width: 32%;
+          width: 53%;
           cursor: pointer;
-          transform: translate(0%, 25%)
+          transform: translate(0%, 36%)
         }
       }
       &.edit {
@@ -261,13 +275,15 @@
       }
     }
     .collect {
-      width: 20vw;
       height: 8.5vw;
       line-height: 8.5vw;
-      background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
       background-image: url("../assets/scbg.png");
+      width: 15vw;
+      margin-left: 5vw;
+      background-size: 56%;
+
       img {
         width: 22%;
         cursor: pointer;

@@ -30,7 +30,7 @@
           return
         }
 
-        this.$nextTick(() => {
+        // this.$nextTick(() => {
           this.$mq = $('.sig-list-wrapper').marquee({
             speed: 120,
             duplicated: len > 2,
@@ -38,7 +38,7 @@
             // pauseOnHover: true,
           })
         })
-      })
+      // })
     },
     beforeDestroy () {
       this.$mq && this.$mq.marquee('destroy')
