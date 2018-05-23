@@ -18,12 +18,12 @@
           <img src="../assets/bc.png">
           <ul>
             <li class="subMenu active">
-              <img v-show="active" src="../assets/xi.png" @click="setStrokeStyle('thin')">
-              <img v-show="!active" src="../assets/xi2.png" @click="setStrokeStyle('thin')">
+              <img src="../assets/xi.png" @click="setStrokeStyle('thin')">
+              <img src="../assets/xi2.png" @click="setStrokeStyle('thin')">
             </li>
             <li class="subMenu">
-              <img v-show="active" src="../assets/cu.png" @click="setStrokeStyle('thick')">
-              <img v-show="!active" src="../assets/cu2.png" @click="setStrokeStyle('thick')">
+              <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
+              <img src="../assets/cu2.png" @click="setStrokeStyle('thick')">
             </li>
           </ul>
         </li>
@@ -31,20 +31,20 @@
           <img src="../assets/bj.png">
           <ul>r
             <li class="subMenu">
-              <img v-show="active" src="../assets/qk.png" @click="clear">
-              <img v-show="!active" src="../assets/qk2.png" @click="clear">
+              <img src="../assets/qk.png" @click="clear">
+              <img src="../assets/qk2.png" @click="clear">
             </li>
             <li class="subMenu">
-              <img v-show="active" src="../assets/cch.png" @click="erase">
-              <img v-show="!active" src="../assets/cch2.png" @click="erase">
+              <img src="../assets/cch.png" @click="erase">
+              <img src="../assets/cch2.png" @click="erase">
             </li>
             <li class="subMenu">
-              <img v-show="active" src="../assets/cx.png" @click="revoke">
-              <img v-show="!active" src="../assets/cx2.png" @click="revoke">
+              <img src="../assets/cx.png" @click="revoke">
+              <img src="../assets/cx2.png" @click="revoke">
             </li>
             <li class="subMenu">
-              <img v-show="active" src="../assets/qxcx.png" @click="cancelRevoke">
-              <img v-show="!active" src="../assets/qxcx2.png" @click="cancelRevoke">
+              <img src="../assets/qxcx.png" @click="cancelRevoke">
+              <img src="../assets/qxcx2.png" @click="cancelRevoke">
             </li>
           </ul>
         </li>
@@ -78,7 +78,6 @@
       showBichu: false,
       center: false,
       thumb: '',
-      active: true
     }),
     computed: {
       cvHeight () {
@@ -115,7 +114,6 @@
         signaturePad.minWidth = minWidth
         signaturePad.maxWidth = maxWidth
         signaturePad.penColor = '#000'
-        this.active = false
       },
       clear () {
         signaturePad.clear()
@@ -266,6 +264,20 @@
           width: 53%;
           cursor: pointer;
           transform: translate(0%, 36%)
+        }
+        img:first-child {
+          display: inline-block;
+        }
+        img:last-child {
+          display: none;
+        }
+        &.active {
+          img:first-child {
+            display: none;
+          }
+          img:last-child {
+            display: inline-block;
+          }
         }
       }
       &.edit {
