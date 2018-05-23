@@ -30,15 +30,18 @@
           return
         }
 
-        // this.$nextTick(() => {
+        this.$nextTick(() => {
           this.$mq = $('.sig-list-wrapper').marquee({
             speed: 120,
             duplicated: len > 2,
             startVisible: true,
-            // pauseOnHover: true,
           })
+          // magic code
+          // 当sigList长度超过50时， marquee会生成两个列表，删除后一个
+          const extra = $('.js-marquee').eq(1)
+          extra && extra.remove()
         })
-      // })
+      })
     },
     beforeDestroy () {
       this.$mq && this.$mq.marquee('destroy')
