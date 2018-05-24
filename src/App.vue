@@ -1,12 +1,22 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Home v-if="pageIndex===0"/>
+    <Exhibition v-if="pageIndex===1"/>
   </div>
 </template>
 
 <script>
+  import Home from './pages/Home'
+  import Exhibition from './pages/Exhibition'
+
   export default {
     name: 'App',
+    components: {Home, Exhibition},
+    computed: {
+      pageIndex () {
+        return this.$store.state.pageIndex
+      }
+    },
     mounted () {
       if (window.innerWidth < window.innerHeight) {
         alert('请使用横屏浏览！')

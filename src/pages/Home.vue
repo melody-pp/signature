@@ -155,13 +155,17 @@
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
+        if (!signaturePad._data.length) {
+          return
+        }
+
         this.$axios.post('/qmadmin/index.php/Api/index', {
           thumb: signaturePad.toDataURL()
         })
 
         const {juan, sig} = this.$refs
         new TimelineLite({
-          onComplete: () => this.$router.push('/exhibition')
+          onComplete: () => this.$store.commit('setPageIndex', 1)
         }).to(juan, 2, {width: 0})
           .to(sig, .8, {scale: 0.2, y: '66%', x: '30%', rotation: 0})
           .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '30%'})

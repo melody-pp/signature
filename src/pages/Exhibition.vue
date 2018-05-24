@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox center" @click="$router.push('/')">
+  <div class="mainBox center" @click="$store.commit('setPageIndex', 0)">
     <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
     <div class="sig-list-wrapper">
       <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">
