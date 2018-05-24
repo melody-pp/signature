@@ -18,6 +18,7 @@
       }
     },
     mounted () {
+      window.ondragstart = function () { return false }
       if (window.innerWidth < window.innerHeight) {
         alert('请使用横屏浏览！')
         location.reload()
@@ -51,6 +52,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  img {
+    user-select: none;
   }
 
   .clearfix:before,

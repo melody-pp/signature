@@ -148,7 +148,9 @@
         revokeStates = []
 
         const {juan, sig} = this.$refs
-        new TimelineLite()
+        new TimelineLite({
+          onComplete: () => sig.style.transform = ''
+        })
           .set(juan, {width: 0})
           .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 0})
           .to(sig, 1, {autoAlpha: 1, scale: 0.9, y: 0, x: 0, rotation: 0})
