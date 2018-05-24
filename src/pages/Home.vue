@@ -2,12 +2,12 @@
   <div class="mainBox" :class="{center}">
     <img class="title" src="../assets/bt.png">
     <div ref="sig" class="sig-container">
-      <img class="zhou left" src="../assets/juanzhou_bian.png">
+      <img class="zhou left" src="../assets/juanzhou_bian.png" border="0">
       <div ref="juan" class="juan-wrapper">
-        <img class="juan" src="../assets/juanzhou_zhong.png">
+        <img class="juan" src="../assets/juanzhou_zhong.png" border="0">
         <canvas ref="canvas" :width="cvWidth" :height="cvHeight"></canvas>
       </div>
-      <img class="zhou right" src="../assets/juanzhou_bian.png">
+      <img class="zhou right" src="../assets/juanzhou_bian.png" border="0">
     </div>
     <div class="menu">
       <ul class="clearfix">
@@ -137,7 +137,7 @@
       erase () {
         signaturePad.minWidth = 10
         signaturePad.maxWidth = 10
-        signaturePad.penColor = '#fff'
+        signaturePad.penColor = '#fafaf9'
       },
       goBack () {
         console.log('返回')
@@ -163,8 +163,8 @@
         new TimelineLite({
           onComplete: () => this.$router.push('/exhibition')
         }).to(juan, 2, {width: 0})
-          .to(sig, .8, {scale: 0.2, y: '66%', x: '28%', rotation: 0})
-          .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '28%'})
+          .to(sig, .8, {scale: 0.2, y: '66%', x: '30%', rotation: 0})
+          .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '30%'})
       }
     }
   }
@@ -174,7 +174,7 @@
   .mainBox {
     text-align: center;
     .title {
-      width: 20vw;
+      width: 17vw;
       margin-top: 3vw;
     }
   }
@@ -191,17 +191,20 @@
 
   .juan {
     width: 60vw;
+    border: 0px none;
   }
 
   .zhou {
     width: 3.5vw;
     z-index: 5;
+    border: 0px none;
+
     &.left {
       position: relative;
       margin-right: -.5vw;
     }
     &.right {
-      margin-left: -.5vw;
+      margin-left: -.65vw;
     }
   }
 
@@ -217,7 +220,7 @@
     width: 54.5833333vw;
     height: 19.5845vw;
     position: absolute;
-    background: #fff;
+    /*background: #fff;*/
   }
 
   .menu {
@@ -230,9 +233,10 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
+      cursor: pointer;
+
       > img {
         width: 25%;
-        cursor: pointer;
         position: relative;
         z-index: 2;
       }
@@ -290,7 +294,7 @@
       height: 8.5vw;
       line-height: 8.5vw;
       background-repeat: no-repeat;
-      background-position: center center;
+      background-position: 80% center;
       background-image: url("../assets/scbg.png");
       width: 15vw;
       margin-left: 5vw;

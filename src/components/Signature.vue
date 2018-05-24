@@ -24,7 +24,7 @@
       left: 8.9vh;
       height: 29vh;
       position: absolute;
-      background: #fff;
+      /*background: #fff;*/
     }
   }
 
@@ -37,10 +37,10 @@
       height: 50vh;
       &.left {
         position: relative;
-        margin-right: -1vh;
+        margin-right: -1vw;
       }
       &.right {
-        margin-left: -1vh;
+        margin-left: -1vw;
       }
     }
   }

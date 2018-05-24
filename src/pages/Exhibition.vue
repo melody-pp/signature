@@ -60,7 +60,7 @@
     .title {
       width: 22vw;
       margin-top: 5vh;
-      margin-bottom: -5vh;
+      margin-bottom: -2.5vh;
     }
     .sig-list-wrapper {
       overflow: hidden;
