@@ -5,7 +5,7 @@
       <img class="zhou left" src="../assets/juanzhou_bian.png" border="0">
       <div ref="juan" class="juan-wrapper">
         <img class="juan" src="../assets/juanzhou_zhong.png" border="0">
-        <canvas ref="canvas" :width="cvWidth" :height="cvHeight"></canvas>
+        <canvas ref="canvas"></canvas>
       </div>
       <img class="zhou right" src="../assets/juanzhou_bian.png" border="0">
     </div>
@@ -73,26 +73,17 @@
   export default {
     name: 'home',
     data: () => ({
-      cvWidth: 655,
       showEdit: false,
       showBichu: false,
       center: false,
       thumb: '',
     }),
-    computed: {
-      cvHeight () {
-        return this.cvWidth * 0.3588
-      }
-    },
     created () {
-      this.cvWidth = window.innerWidth * 0.545833333
-      this.center = (window.innerWidth / window.innerHeight) < 1.667
-
-      window.addEventListener('resize', () => {
-        this.center = (window.innerWidth / window.innerHeight) < 1.667
-      })
+      window.addEventListener('resize', this.resizeHandler.bind(this))
     },
     mounted () {
+      this.resizeHandler()
+
       signaturePad = new SignaturePad(
         this.$refs.canvas,
         {minWidth: 1, maxWidth: 6, onEnd: this.addRevokeState}
@@ -102,6 +93,16 @@
       this.bindEvent($('.subMenu'), $('.subMenu>img'))
     },
     methods: {
+      resizeHandler () {
+        const canvas = this.$refs.canvas
+        const ratio = Math.max(window.devicePixelRatio || 1, 1)
+        canvas.width = canvas.offsetWidth * ratio
+        canvas.height = canvas.offsetHeight * ratio
+        canvas.getContext('2d').scale(ratio, ratio)
+        signaturePad && signaturePad.clear()
+
+        this.center = (window.innerWidth / window.innerHeight) < 1.667
+      },
       bindEvent ($parents, $imgs) {
         $imgs.on('click', function () {
           $parents.removeClass('active')
