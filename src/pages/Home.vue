@@ -170,8 +170,8 @@
         new TimelineLite({
           onComplete: () => this.$store.commit('setPageIndex', 1)
         }).to(juan, 2, {width: 0})
-          .to(sig, .8, {scale: 0.2, y: '66%', x: '30%', rotation: 360})
-          .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '30%'})
+          .to(sig, 0.2, {scale: 1})
+          .to(sig, 1, {scale: 0.5, autoAlpha: 0, y: '66%', x: '30%', rotation: 360})
       }
     }
   }
@@ -255,7 +255,7 @@
         background-image: url("../assets/bjbg2.png");
       }
       > img {
-        transform: translate(-2%, 42%);
+        transform: translate(-2%, 33%);
       }
       > ul {
         position: absolute;
