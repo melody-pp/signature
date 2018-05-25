@@ -1,7 +1,8 @@
 <template>
   <div class="mainBox center" @click="$store.commit('setPageIndex', 0)">
     <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
-    <div class="sig-list-wrapper">
+    <img src="../assets/loading.gif" class="loading" v-show="isLoading">
+    <div class="sig-list-wrapper" v-show="!isLoading">
       <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">
         <Signature v-for="sig of sigList" :sigUrl="sig.dataurl" :key="sig.id" class="signature"/>
       </div>
@@ -19,10 +20,13 @@
     components: {Signature},
     data: () => ({
       $mq: null,
-      sigList: []
+      sigList: [],
+      isLoading: true
     }),
     mounted () {
+
       this.$axios.post('/qmadmin/index.php/Api/getalldata').then(data => {
+        this.isLoading = false
         this.sigList = data.data
         const len = this.sigList.length
 

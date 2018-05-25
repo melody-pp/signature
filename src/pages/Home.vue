@@ -154,7 +154,7 @@
         })
           .set(juan, {width: 0})
           .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 0})
-          .to(sig, 1, {autoAlpha: 1, scale: 0.9, y: 0, x: 0, rotation: 0})
+          .to(sig, 1, {autoAlpha: 1, scale: 1, y: 0, x: 0, rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
@@ -170,7 +170,7 @@
         new TimelineLite({
           onComplete: () => this.$store.commit('setPageIndex', 1)
         }).to(juan, 2, {width: 0})
-          .to(sig, .8, {scale: 0.2, y: '66%', x: '30%', rotation: 0})
+          .to(sig, .8, {scale: 0.2, y: '66%', x: '30%', rotation: 360})
           .to(sig, .8, {scale: 0.1, autoAlpha: 0, y: '66%', x: '30%'})
       }
     }

@@ -73,4 +73,12 @@
     position: absolute;
     transform: translateY(-50%);
   }
+
+  .loading {
+    top: 50%;
+    left: 50%;
+    width: 3vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
 </style>
