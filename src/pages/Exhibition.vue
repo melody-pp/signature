@@ -1,6 +1,6 @@
 <template>
   <div class="mainBox center" @click="$store.commit('setPageIndex', 0)">
-    <img class="title" src="../assets/exhibitionTitle.png" @click="$router.push('/')">
+    <img class="title" src="../assets/exhibitionTitle.png">
     <img src="../assets/loading.gif" class="loading" v-show="isLoading">
     <div class="sig-list-wrapper" v-show="!isLoading">
       <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">

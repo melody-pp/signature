@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox" :class="{center}">
+  <div class="mainBox">
     <img class="title" src="../assets/bt.png">
     <div ref="sig" class="sig-container">
       <img class="zhou left" src="../assets/juanzhou_bian.png" border="0">
@@ -75,7 +75,6 @@
     data: () => ({
       showEdit: false,
       showBichu: false,
-      center: false,
       thumb: '',
     }),
     created () {
@@ -100,8 +99,6 @@
         canvas.height = canvas.offsetHeight * ratio
         canvas.getContext('2d').scale(ratio, ratio)
         signaturePad && signaturePad.clear()
-
-        this.center = (window.innerWidth / window.innerHeight) < 1.667
       },
       bindEvent ($parents, $imgs) {
         $imgs.on('click', function () {
@@ -149,12 +146,10 @@
         revokeStates = []
 
         const {juan, sig} = this.$refs
-        new TimelineLite({
-          onComplete: () => sig.style.transform = ''
-        })
+        new TimelineLite()
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.5, autoAlpha: 0.5, y: 400, x: -700, rotation: 0})
-          .to(sig, 1, {autoAlpha: 1, scale: 1, y: 0, x: 0, rotation: 360})
+          .set(sig, {scale: 0.5, autoAlpha: 0.7, y: '70%', x: '-27%', rotation: 0})
+          .to(sig, 2, {autoAlpha: 1, scale: 1, y: '0%', x: '0%', rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
@@ -162,16 +157,17 @@
           return
         }
 
-        this.$axios.post('/qmadmin/index.php/Api/index', {
-          thumb: signaturePad.toDataURL()
-        })
+        const data = new FormData()
+        data.append('thumb',  signaturePad.toDataURL())
+        this.$axios.post('/qmadmin/index.php/Api/index', data)
 
         const {juan, sig} = this.$refs
         new TimelineLite({
           onComplete: () => this.$store.commit('setPageIndex', 1)
-        }).to(juan, 2, {width: 0})
-          .to(sig, 0.2, {scale: 1, autoAlpha: 1, y: 0, x: 0, rotation: 0})
-          .to(sig, 1, {scale: 0.5, autoAlpha: 0, y: 400, x: 1400, rotation: 360})
+        })
+          .set(sig, {rotation: 0})
+          .to(juan, 2, {width: 0})
+          .to(sig, 2, {scale: 0.5, autoAlpha: .7, y: '70%', x: '30%', rotation: 360})
       }
     }
   }
@@ -181,6 +177,7 @@
   .mainBox {
     text-align: center;
     position: relative;
+    overflow: hidden;
     .title {
       width: 17vw;
       margin-top: 3vw;
@@ -190,7 +187,8 @@
   .sig-container {
     font-size: 0;
     position: absolute;
-    left: 17%;
+    left: 0;
+    right: 0;
   }
 
   .juan-wrapper {
