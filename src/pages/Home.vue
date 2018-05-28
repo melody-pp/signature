@@ -258,7 +258,7 @@
         background-image: url("../assets/bjbg2.png");
       }
       > img {
-        transform: translate(-2%, 33%);
+        transform: translate(-2%, 30%);
       }
       > ul {
         position: absolute;
