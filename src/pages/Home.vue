@@ -170,8 +170,8 @@
         new TimelineLite({
           onComplete: () => this.$store.commit('setPageIndex', 1)
         }).to(juan, 2, {width: 0})
-          .to(sig, 0.2, {scale: 1})
-          .to(sig, 1, {scale: 0.5, autoAlpha: 0, y: '66%', x: '30%', rotation: 360})
+          .to(sig, 0.2, {scale: 1, autoAlpha: 1, y: 0, x: 0, rotation: 360})
+          .to(sig, 1, {scale: 0.5, autoAlpha: 0, y: 400, x: 1400})
       }
     }
   }
@@ -180,6 +180,7 @@
 <style scoped lang="scss">
   .mainBox {
     text-align: center;
+    position: relative;
     .title {
       width: 17vw;
       margin-top: 3vw;
@@ -188,6 +189,8 @@
 
   .sig-container {
     font-size: 0;
+    position: absolute;
+    left: 17%;
   }
 
   .juan-wrapper {
@@ -231,7 +234,7 @@
   }
 
   .menu {
-    margin-top: 2vw;
+    margin-top: 35vw;
     padding: 0 14.5vw;
     > ul > li {
       width: 17vw;
