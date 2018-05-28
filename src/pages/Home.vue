@@ -141,7 +141,7 @@
         signaturePad.penColor = '#fafaf9'
       },
       goBack () {
-        console.log('返回')
+        // console.log('返回')
       },
       addSig () {
         signaturePad.clear()
@@ -170,8 +170,8 @@
         new TimelineLite({
           onComplete: () => this.$store.commit('setPageIndex', 1)
         }).to(juan, 2, {width: 0})
-          .to(sig, 0.2, {scale: 1, autoAlpha: 1, y: 0, x: 0, rotation: 360})
-          .to(sig, 1, {scale: 0.5, autoAlpha: 0, y: 400, x: 1400})
+          .to(sig, 0.2, {scale: 1, autoAlpha: 1, y: 0, x: 0, rotation: 0})
+          .to(sig, 1, {scale: 0.5, autoAlpha: 0, y: 400, x: 1400, rotation: 360})
       }
     }
   }
