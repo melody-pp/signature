@@ -29,7 +29,7 @@
         </li>
         <li class="menuPer edit">
           <img src="../assets/bj.png">
-          <ul>r
+          <ul>
             <li class="subMenu">
               <img src="../assets/qk.png" @click="clear">
               <img src="../assets/qk2.png" @click="clear">
@@ -148,7 +148,7 @@
         const {juan, sig} = this.$refs
         new TimelineLite()
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.5, autoAlpha: 0.7, y: '70%', x: '-27%', rotation: 0})
+          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-27%', rotation: 0})
           .to(sig, 2, {autoAlpha: 1, scale: 1, y: '0%', x: '0%', rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
@@ -158,7 +158,7 @@
         }
 
         const data = new FormData()
-        data.append('thumb',  signaturePad.toDataURL())
+        data.append('thumb', signaturePad.toDataURL())
         this.$axios.post('/qmadmin/index.php/Api/index', data)
 
         const {juan, sig} = this.$refs
@@ -167,7 +167,7 @@
         })
           .set(sig, {rotation: 0})
           .to(juan, 2, {width: 0})
-          .to(sig, 2, {scale: 0.5, autoAlpha: .7, y: '70%', x: '30%', rotation: 360})
+          .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '30%', rotation: 360})
       }
     }
   }
@@ -180,7 +180,7 @@
     overflow: hidden;
     .title {
       width: 17vw;
-      margin-top: 3vw;
+      margin-top: 6vh;
     }
   }
 
@@ -189,6 +189,7 @@
     position: absolute;
     left: 0;
     right: 0;
+
   }
 
   .juan-wrapper {
@@ -232,10 +233,10 @@
   }
 
   .menu {
-    margin-top: 35vw;
-    padding: 0 14.5vw;
+    margin-top: 69vh;
+    padding: 0 11.2vw;
     > ul > li {
-      width: 17vw;
+      width: 18.8vw;
       line-height: 8vw;
       float: left;
       background-size: contain;
@@ -269,6 +270,7 @@
         background-position: center center;
         background-image: url("../assets/qkbg.png");
         float: left;
+        margin: 0 0.3vw;
         &.active {
           background-image: url("../assets/qkbg2.png");
         }
@@ -325,6 +327,15 @@
         cursor: pointer;
         transform: translate(0%, 40%);
       }
+    }
+  }
+
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .sig-container {
+      top: 18vh;
+    }
+    .title {
+      margin-top: 10vh;
     }
   }
 </style>
