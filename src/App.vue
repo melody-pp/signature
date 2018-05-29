@@ -71,8 +71,13 @@
   .loading {
     top: 50%;
     left: 50%;
-    width: 3vw;
     position: absolute;
     transform: translate(-50%, -50%);
+    text-align: center;
+    color: #716e6e;
+  }
+
+  .loadingImg {
+    width: 3vw;
   }
 </style>

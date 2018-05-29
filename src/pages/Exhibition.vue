@@ -1,7 +1,11 @@
 <template>
   <div class="mainBox center" @click="$store.commit('setPageIndex', 0)">
     <img class="title" src="../assets/exhibitionTitle.png">
-    <img src="../assets/loading.gif" class="loading" v-show="isLoading">
+    <div v-show="isLoading" class="loading">
+      <img src="../assets/loading.gif" class="loadingImg" v-show="isLoading">
+      <p>正在载入</p>
+    </div>
+
     <div class="sig-list-wrapper" v-show="!isLoading">
       <div class="sig-list-container" :style="{width: sigList.length*140+'vh'}">
         <Signature v-for="sig of sigList" :sigUrl="sig.dataurl" :key="sig.id" class="signature"/>

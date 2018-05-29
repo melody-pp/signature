@@ -206,7 +206,6 @@
   .zhou {
     width: 3.5vw;
     z-index: 5;
-    border: 0px none;
 
     &.left {
       position: relative;
