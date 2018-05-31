@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox">
+  <div class="mainBox" :class="{center}">
     <img class="title" src="../assets/bt.png">
     <div ref="sig" class="sig-container">
       <img class="zhou left" src="../assets/juanzhou_bian.png" border="0">
@@ -76,6 +76,7 @@
       showEdit: false,
       showBichu: false,
       thumb: '',
+      center: false,
     }),
     created () {
       window.addEventListener('resize', this.resizeHandler.bind(this))
@@ -99,6 +100,8 @@
         canvas.height = canvas.offsetHeight * ratio
         canvas.getContext('2d').scale(ratio, ratio)
         signaturePad && signaturePad.clear()
+
+        this.center = (window.innerWidth / window.innerHeight) < 1.667
       },
       bindEvent ($parents, $imgs) {
         $imgs.on('click', function () {
@@ -178,6 +181,11 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    &.center {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     .title {
       width: 17vw;
       margin-top: 6vh;
@@ -232,7 +240,7 @@
   }
 
   .menu {
-    margin-top: 69vh;
+    margin-top: 35vw;
     padding: 0 11.2vw;
     > ul > li {
       width: 18.8vw;
@@ -329,12 +337,12 @@
     }
   }
 
-  @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    .sig-container {
-      top: 18vh;
-    }
-    .title {
-      margin-top: 10vh;
-    }
-  }
+  /*@media only screen and (min-width: 600px) and (max-width: 1024px) {*/
+  /*.sig-container {*/
+  /*top: 18vh;*/
+  /*}*/
+  /*.title {*/
+  /*margin-top: 10vh;*/
+  /*}*/
+  /*}*/
 </style>
