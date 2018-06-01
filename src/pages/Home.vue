@@ -151,7 +151,7 @@
         const {juan, sig} = this.$refs
         new TimelineLite()
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-27%', rotation: 0})
+          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-30%', rotation: 0})
           .to(sig, 2, {autoAlpha: 1, scale: 1, y: '0%', x: '0%', rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
