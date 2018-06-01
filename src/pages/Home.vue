@@ -187,7 +187,7 @@
       transform: translateY(-50%);
     }
     .title {
-      width: 17vw;
+      width: 15vw;
       margin-top: 2vw;
     }
   }
