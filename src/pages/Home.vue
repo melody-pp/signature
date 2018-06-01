@@ -65,7 +65,7 @@
 
   let signaturePad
   let revokeStep = 0
-  let revokeStates = []
+  let revokeStates = [{}]
 
   const ratio = Math.max(window.devicePixelRatio || 1, 1)
   const strokeWidths = {thin: [1, 6], thick: [3, 13]}
@@ -145,9 +145,9 @@
       addSig () {
         signaturePad.clear()
         revokeStep = 0
-        revokeStates = []
+        revokeStates = [{}]
 
-        $('.menuPer.bc li').eq(1).click()
+        $('.menuPer.bc li').eq(0).find('img').eq(0).click()
         const {juan, sig} = this.$refs
         new TimelineLite()
           .set(juan, {width: 0})
