@@ -48,7 +48,7 @@
             </li>
           </ul>
         </li>
-        <li class="collect" @click="saveSig">r
+        <li class="collect" @click="saveSig">
         </li>
         <!--<li class="goBack">-->
         <!--<img src="../assets/fh.png" @click="goBack">-->
@@ -170,7 +170,7 @@
         })
           .set(sig, {rotation: 0})
           .to(juan, 2, {width: 0})
-          .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '30%', rotation: 360})
+          .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '32%', rotation: 360})
       }
     }
   }
@@ -188,7 +188,7 @@
     }
     .title {
       width: 17vw;
-      margin-top: 6vh;
+      margin-top: 2vw;
     }
   }
 
@@ -241,7 +241,7 @@
 
   .menu {
     margin-top: 35vw;
-    padding: 0 11.2vw;
+    padding: 0 10vw;
     > ul > li {
       width: 18.8vw;
       line-height: 8vw;
@@ -268,7 +268,7 @@
       }
       > ul {
         position: absolute;
-        top: -5vw;
+        top: -5.5vw;
       }
       .subMenu {
         width: 4vw;
@@ -328,7 +328,9 @@
       background-repeat: no-repeat;
       background-position: center center;
       background-image: url("../assets/qkbg.png");
-      width: 13vw;
+      width: 5vw;
+      position: absolute;
+      right: 3vw;
       img {
         width: 45%;
         cursor: pointer;

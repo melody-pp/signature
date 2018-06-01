@@ -67,7 +67,7 @@
     height: 100vh;
     .title {
       width: 22vw;
-      margin-top: 5vh;
+      margin-top: 8vh;
       margin-bottom: -2.5vh;
     }
     .sig-list-wrapper {
