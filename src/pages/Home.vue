@@ -147,7 +147,7 @@
         revokeStep = 0
         revokeStates = []
 
-        $('.menuPer.bc li').eq(1).click()
+        $('.menuPer.bc li').eq(0).find('img').eq(0).click()
         const {juan, sig} = this.$refs
         new TimelineLite()
           .set(juan, {width: 0})
