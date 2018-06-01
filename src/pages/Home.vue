@@ -67,7 +67,7 @@
   let revokeStep = 0
   let revokeStates = []
 
-  const ratio = 1
+  const ratio = Math.max(window.devicePixelRatio || 1, 1)
   const strokeWidths = {thin: [1, 6], thick: [3, 13]}
 
   export default {
@@ -95,7 +95,6 @@
     methods: {
       resizeHandler () {
         const canvas = this.$refs.canvas
-        const ratio = Math.max(window.devicePixelRatio || 1, 1)
         canvas.width = canvas.offsetWidth * ratio
         canvas.height = canvas.offsetHeight * ratio
         canvas.getContext('2d').scale(ratio, ratio)
@@ -148,6 +147,7 @@
         revokeStep = 0
         revokeStates = []
 
+        $('.menuPer.bc li').eq(1).click()
         const {juan, sig} = this.$refs
         new TimelineLite()
           .set(juan, {width: 0})
