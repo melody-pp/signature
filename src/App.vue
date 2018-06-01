@@ -80,4 +80,9 @@
   .loadingImg {
     width: 3vw;
   }
+
+  .loadingTxt {
+    width: 4vw;
+    display: block;
+  }
 </style>

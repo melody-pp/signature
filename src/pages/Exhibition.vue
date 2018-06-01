@@ -2,8 +2,8 @@
   <div class="mainBox center" @click="$store.commit('setPageIndex', 0)">
     <img class="title" src="../assets/exhibitionTitle.png">
     <div v-show="isLoading" class="loading">
-      <img src="../assets/loading.gif" class="loadingImg" v-show="isLoading">
-      <p>正在载入</p>
+      <img src="../assets/loadingSig.gif" class="loadingImg">
+      <img src="../assets/loadingTxt.png" class="loadingTxt">
     </div>
 
     <div class="sig-list-wrapper" v-show="!isLoading">
@@ -29,7 +29,7 @@
     }),
     mounted () {
 
-      this.$axios.post('/qmadmin/index.php/Api/getalldata').then(data => {
+      this.$axios.post('/qmadmin/index.php/index/index/getalldata').then(data => {
         this.isLoading = false
         this.sigList = data.data
         const len = this.sigList.length

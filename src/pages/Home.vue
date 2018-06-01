@@ -162,7 +162,7 @@
 
         const data = new FormData()
         data.append('thumb', signaturePad.toDataURL())
-        this.$axios.post('/qmadmin/index.php/Api/index', data)
+        this.$axios.post('/qmadmin/index.php/index/index/index', data)
 
         const {juan, sig} = this.$refs
         new TimelineLite({
