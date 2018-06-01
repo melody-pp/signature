@@ -77,6 +77,7 @@
       showBichu: false,
       thumb: '',
       center: false,
+      isBusy: false,
     }),
     created () {
       window.addEventListener('resize', this.resizeHandler.bind(this))
@@ -143,22 +144,32 @@
         // console.log('返回')
       },
       addSig () {
+        if (this.isBusy) {
+          return
+        }
+
+        this.isBusy = true
         signaturePad.clear()
         revokeStep = 0
         revokeStates = [{}]
 
         $('.menuPer.bc li').eq(0).find('img').eq(0).click()
         const {juan, sig} = this.$refs
-        new TimelineLite()
+        new TimelineLite({
+          onComplete: () => {
+            this.isBusy = false
+          }
+        })
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-30%', rotation: 0})
+          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-27%', rotation: 0})
           .to(sig, 2, {autoAlpha: 1, scale: 1, y: '0%', x: '0%', rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
-        if (!signaturePad._data.length) {
+        if (!signaturePad._data.length || this.isBusy) {
           return
         }
+        this.isBusy = true
 
         const data = new FormData()
         data.append('thumb', signaturePad.toDataURL())
@@ -166,7 +177,10 @@
 
         const {juan, sig} = this.$refs
         new TimelineLite({
-          onComplete: () => this.$store.commit('setPageIndex', 1)
+          onComplete: () => {
+            this.isBusy = false
+            this.$store.commit('setPageIndex', 1)
+          }
         })
           .set(sig, {rotation: 0})
           .to(juan, 2, {width: 0})
