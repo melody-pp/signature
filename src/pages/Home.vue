@@ -83,6 +83,7 @@
       window.addEventListener('resize', this.resizeHandler.bind(this))
     },
     mounted () {
+      this.bindEvent()
       this.resizeHandler()
 
       signaturePad = new SignaturePad(
@@ -90,15 +91,29 @@
         {minWidth: 1, maxWidth: 6, onBegin: this.onBegin, onEnd: this.addRevokeState}
       )
 
-      // this.bindEvent($('.menuPer'), $('.menuPer>img'))
-      this.bindEvent($('.subMenu'), $('.subMenu>img'))
+      // magic code edge浏览器下，第一次切换二级菜单的active会导致初始active菜单下的图片显示异常
+      // 所以，加载时手动切换一次二级菜单active
+      const bcs = $('.menuPer.bc li')
+      bcs.eq(1).click()
+      bcs.eq(0).click()
     },
     methods: {
+      bindEvent () {
+        const subMenus = [...document.querySelectorAll('.subMenu')]
+        subMenus.forEach(subMenu => {
+          subMenu.addEventListener('click', () => {
+            subMenus.forEach(item => item.classList.remove('active'))
+            subMenu.classList.add('active')
+          })
+        })
+      },
       onBegin () {
         if (signaturePad.minWidth === 1) {
-          $('.menuPer.bc li').eq(0).find('img').eq(0).click()
-        } else if (signaturePad.minWidth === 3) {
-          $('.menuPer.bc li').eq(1).find('img').eq(0).click()
+          $('.menuPer.bc li').eq(0).click()
+        }
+
+        if (signaturePad.minWidth === 3) {
+          $('.menuPer.bc li').eq(1).click()
         }
       },
       resizeHandler () {
@@ -109,12 +124,6 @@
         signaturePad && signaturePad.clear()
 
         this.center = (window.innerWidth / window.innerHeight) < 1.667
-      },
-      bindEvent ($parents, $imgs) {
-        $imgs.on('click', function () {
-          $parents.removeClass('active')
-          $(this).parent().addClass('active')
-        })
       },
       setStrokeStyle (style) {
         const [minWidth, maxWidth] = strokeWidths[style]
@@ -160,7 +169,7 @@
         revokeStep = 0
         revokeStates = [{}]
 
-        $('.menuPer.bc li').eq(0).find('img').eq(0).click()
+        $('.menuPer.bc li').eq(0).click()
         const {juan, sig} = this.$refs
         new TimelineLite({
           onComplete: () => {
@@ -365,13 +374,4 @@
       }
     }
   }
-
-  /*@media only screen and (min-width: 600px) and (max-width: 1024px) {*/
-  /*.sig-container {*/
-  /*top: 18vh;*/
-  /*}*/
-  /*.title {*/
-  /*margin-top: 10vh;*/
-  /*}*/
-  /*}*/
 </style>
