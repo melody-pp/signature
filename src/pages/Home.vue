@@ -87,13 +87,20 @@
 
       signaturePad = new SignaturePad(
         this.$refs.canvas,
-        {minWidth: 1, maxWidth: 6, onEnd: this.addRevokeState}
+        {minWidth: 1, maxWidth: 6, onBegin: this.onBegin, onEnd: this.addRevokeState}
       )
 
       // this.bindEvent($('.menuPer'), $('.menuPer>img'))
       this.bindEvent($('.subMenu'), $('.subMenu>img'))
     },
     methods: {
+      onBegin () {
+        if (signaturePad.minWidth === 1) {
+          $('.menuPer.bc li').eq(0).find('img').eq(0).click()
+        } else if (signaturePad.minWidth === 3) {
+          $('.menuPer.bc li').eq(1).find('img').eq(0).click()
+        }
+      },
       resizeHandler () {
         const canvas = this.$refs.canvas
         canvas.width = canvas.offsetWidth * ratio
@@ -171,20 +178,26 @@
         }
         this.isBusy = true
 
+        const {juan, sig} = this.$refs
+
         const data = new FormData()
         data.append('thumb', signaturePad.toDataURL())
-        this.$axios.post('/qmadmin/index.php/index/index/index', data)
-
-        const {juan, sig} = this.$refs
-        new TimelineLite({
-          onComplete: () => {
-            this.isBusy = false
-            this.$store.commit('setPageIndex', 1)
+        this.$axios.post('/qmadmin/index.php/index/index/index', data).then(
+          data => {
+            if (data.data.success) {
+              new TimelineLite({
+                onComplete: () => {
+                  this.isBusy = false
+                  this.$store.commit('setPageIndex', 1)
+                }
+              })
+                .set(sig, {rotation: 0})
+                .to(juan, 2, {width: 0})
+                .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '32%', rotation: 360})
+            }
           }
-        })
-          .set(sig, {rotation: 0})
-          .to(juan, 2, {width: 0})
-          .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '32%', rotation: 360})
+        )
+
       }
     }
   }
@@ -222,7 +235,7 @@
 
   .juan {
     width: 60vw;
-    border: 0px none;
+    border: 0 none;
   }
 
   .zhou {
