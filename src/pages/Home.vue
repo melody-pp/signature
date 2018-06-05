@@ -77,7 +77,7 @@
       showBichu: false,
       thumb: '',
       center: false,
-      isBusy: false,
+
     }),
     created () {
       window.addEventListener('resize', this.resizeHandler.bind(this))
@@ -173,7 +173,7 @@
         const {juan, sig} = this.$refs
         new TimelineLite({
           onComplete: () => {
-            this.isBusy = false
+            state.isBusy = false
           }
         })
           .set(juan, {width: 0})

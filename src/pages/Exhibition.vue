@@ -27,12 +27,6 @@
       sigList: [],
       isLoading: true
     }),
-    methods: {
-      toPageIndex0 () {
-        this.$store.commit('setPageIndex', 0)
-
-      }
-    },
     mounted () {
 
       this.$axios.post('/qmadmin/index.php/index/index/getalldata').then(data => {

@@ -1,3 +1,4 @@
 export default {
-  pageIndex: 0
+  pageIndex: 0,
+  isBusy: false
 }
