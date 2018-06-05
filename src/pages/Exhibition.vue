@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox center" @click="$store.commit('setPageIndex', 0)">
+  <div class="mainBox center" @click="toPageIndex0">
     <img class="title" src="../assets/exhibitionTitle.png">
     <div v-show="isLoading" class="loading">
       <img src="../assets/loadingSig.gif" class="loadingImg">
@@ -27,6 +27,12 @@
       sigList: [],
       isLoading: true
     }),
+    methods: {
+      toPageIndex0 () {
+        this.$store.commit('setPageIndex', 0)
+
+      }
+    },
     mounted () {
 
       this.$axios.post('/qmadmin/index.php/index/index/getalldata').then(data => {
@@ -75,6 +81,7 @@
     }
     .sig-list-container {
       margin-top: 15vh;
+      margin-left: 30vw;
     }
     .signature {
       margin: 0 10vh;
