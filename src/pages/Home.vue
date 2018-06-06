@@ -3,7 +3,7 @@
     <img class="title" src="../assets/bt.png">
     <div ref="sig" class="sig-container">
       <img class="zhou left" src="../assets/juanzhou_bian.png" border="0">
-      <div ref="juan" class="juan-wrapper">
+      <div id="juan-wrapper" ref="juan" class="juan-wrapper">
         <img class="juan" src="../assets/juanzhou_zhong.png" border="0">
         <canvas ref="canvas"></canvas>
       </div>
@@ -173,7 +173,7 @@
         const {juan, sig} = this.$refs
         new TimelineLite({
           onComplete: () => {
-            state.isBusy = false
+            this.$store.state.isBusy = false
           }
         })
           .set(juan, {width: 0})
@@ -196,7 +196,7 @@
             if (data.data.success) {
               new TimelineLite({
                 onComplete: () => {
-                  this.isBusy = false
+                  this.$store.state.isBusy = false
                   this.$store.commit('setPageIndex', 1)
                 }
               })

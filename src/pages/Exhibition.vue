@@ -1,5 +1,5 @@
 <template>
-  <div class="mainBox center" @click="toPageIndex0">
+  <div class="mainBox center" @click="$store.commit('toPageIndex0',0)">
     <img class="title" src="../assets/exhibitionTitle.png">
     <div v-show="isLoading" class="loading">
       <img src="../assets/loadingSig.gif" class="loadingImg">
