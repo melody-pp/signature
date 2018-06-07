@@ -75,6 +75,7 @@
     }
     .sig-list-container {
       margin-top: 15vh;
+      margin-left: 30vw;
     }
     .signature {
       margin: 0 10vh;

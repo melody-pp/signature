@@ -226,8 +226,10 @@
 <style scoped lang="scss">
   .mainBox {
     text-align: center;
-    position: relative;
+    position: absolute;
     overflow: hidden;
+    top: 50%;
+    transform: translateY(-50%);
     &.center {
       position: absolute;
       top: 50%;
