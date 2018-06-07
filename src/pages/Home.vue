@@ -96,6 +96,17 @@
       const bcs = $('.menuPer.bc li')
       bcs.eq(1).click()
       bcs.eq(0).click()
+
+      if (this.$store.state.initAnimate) {
+        const juan = this.$refs
+        new TimelineLite({
+          onComplete: () => {
+            this.$store.commit('setState', {initAnimate: false})
+          }
+        })
+          .set(juan, {width: 0})
+          .to(juan, 2, {width: '60vw'})
+      }
     },
     methods: {
       bindEvent () {
@@ -197,7 +208,7 @@
               new TimelineLite({
                 onComplete: () => {
                   this.isBusy = false
-                  this.$store.commit('setPageIndex', 1)
+                  this.$store.commit('setState', {pageIndex: 1})
                 }
               })
                 .set(sig, {rotation: 0})

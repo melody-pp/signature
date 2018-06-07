@@ -1,5 +1,7 @@
 export default {
-  setPageIndex (state, index) {
-    state.pageIndex = index
+  setState (state, data) {
+    Object.keys(data).forEach(key => {
+      state[key] = data[key]
+    })
   }
 }
