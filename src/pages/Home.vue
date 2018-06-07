@@ -160,11 +160,11 @@
         // console.log('返回')
       },
       addSig () {
-        if (this.$store.state.isBusy) {
+        if (this.isBusy) {
           return
         }
 
-        this.$store.state.isBusy = true
+        this.isBusy = true
         signaturePad.clear()
         revokeStep = 0
         revokeStates = [{}]
@@ -182,10 +182,10 @@
           .to(juan, 2, {width: '60vw'})
       },
       saveSig () {
-        if (!signaturePad._data.length || this.$store.state.isBusy) {
+        if (!signaturePad._data.length || this.isBusy) {
           return
         }
-        this.$store.state.isBusy = true
+        this.isBusy = true
 
         const {juan, sig} = this.$refs
 
