@@ -18,12 +18,12 @@
           <img src="../assets/bc.png">
           <ul>
             <li class="subMenu active">
-              <img src="../assets/xi2.png" @click="setStrokeStyle('thin')">
               <img src="../assets/xi.png" @click="setStrokeStyle('thin')">
+              <img src="../assets/xi2.png" @click="setStrokeStyle('thin')">
             </li>
             <li class="subMenu">
-              <img src="../assets/cu2.png" @click="setStrokeStyle('thick')">
               <img src="../assets/cu.png" @click="setStrokeStyle('thick')">
+              <img src="../assets/cu2.png" @click="setStrokeStyle('thick')">
             </li>
           </ul>
         </li>
@@ -31,20 +31,20 @@
           <img src="../assets/bj.png">
           <ul>
             <li class="subMenu">
-              <img src="../assets/qk2.png" @click="clear">
               <img src="../assets/qk.png" @click="clear">
+              <img src="../assets/qk2.png" @click="clear">
             </li>
             <li class="subMenu">
-              <img src="../assets/cch2.png" @click="erase">
               <img src="../assets/cch.png" @click="erase">
+              <img src="../assets/cch2.png" @click="erase">
             </li>
             <li class="subMenu">
-              <img src="../assets/cx2.png" @click="revoke">
               <img src="../assets/cx.png" @click="revoke">
+              <img src="../assets/cx2.png" @click="revoke">
             </li>
             <li class="subMenu">
-              <img src="../assets/qxcx2.png" @click="cancelRevoke">
               <img src="../assets/qxcx.png" @click="cancelRevoke">
+              <img src="../assets/qxcx2.png" @click="cancelRevoke">
             </li>
           </ul>
         </li>
@@ -177,7 +177,7 @@
           }
         })
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.2, autoAlpha: 0, y: '70%', x: '-27%', rotation: 0})
+          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-27%', rotation: 0})
           .to(sig, 2, {autoAlpha: 1, scale: 1, y: '0%', x: '0%', rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
@@ -202,7 +202,7 @@
               })
                 .set(sig, {rotation: 0})
                 .to(juan, 2, {width: 0})
-                .to(sig, 2, {scale: 0.2, autoAlpha: 0, y: '70%', x: '34%', rotation: 360})
+                .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '32%', rotation: 360})
             }
           }
         )
@@ -215,10 +215,8 @@
 <style scoped lang="scss">
   .mainBox {
     text-align: center;
-    position: absolute;
+    position: relative;
     overflow: hidden;
-    top: 50%;
-    transform: translateY(-50%);
     &.center {
       position: absolute;
       top: 50%;
@@ -313,11 +311,11 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
-        background-image: url("../assets/qkbg2.png");
+        background-image: url("../assets/qkbg.png");
         float: left;
         margin: 0 0.3vw;
         &.active {
-          background-image: url("../assets/qkbg.png");
+          background-image: url("../assets/qkbg2.png");
         }
         img {
           width: 53%;
