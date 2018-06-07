@@ -98,7 +98,7 @@
       bcs.eq(0).click()
 
       if (this.$store.state.initAnimate) {
-        const juan = this.$refs
+        const juan = this.$refs.juan
         new TimelineLite({
           onComplete: () => {
             this.$store.commit('setState', {initAnimate: false})
