@@ -188,7 +188,7 @@
           }
         })
           .set(juan, {width: 0})
-          .set(sig, {scale: 0.2, autoAlpha: 0.4, y: '70%', x: '-27%', rotation: 0})
+          .set(sig, {scale: 0.2, autoAlpha: 0, y: '70%', x: '-27%', rotation: 0})
           .to(sig, 2, {autoAlpha: 1, scale: 1, y: '0%', x: '0%', rotation: 360})
           .to(juan, 2, {width: '60vw'})
       },
@@ -213,7 +213,7 @@
               })
                 .set(sig, {rotation: 0})
                 .to(juan, 2, {width: 0})
-                .to(sig, 2, {scale: 0.2, autoAlpha: .4, y: '70%', x: '32%', rotation: 360})
+                .to(sig, 2, {scale: 0.2, autoAlpha: 0, y: '70%', x: '34%', rotation: 360})
             }
           }
         )
