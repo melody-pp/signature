@@ -2,12 +2,12 @@
   <div class="mainBox" :class="{center}">
     <img class="title" src="../assets/bt.png">
     <div ref="sig" class="sig-container">
-      <img class="zhou left" src="../assets/juanzhou_bian.png" border="0">
+      <img class="zhou left" src="../assets/zz.png" border="0">
       <div ref="juan" class="juan-wrapper">
-        <img class="juan" src="../assets/juanzhou_zhong.png" border="0">
+        <img class="juan" src="../assets/jm.png" border="0">
         <canvas ref="canvas"></canvas>
       </div>
-      <img class="zhou right" src="../assets/juanzhou_bian.png" border="0">
+      <img class="zhou right" src="../assets/zz.png" border="0">
     </div>
     <div class="menu">
       <ul class="clearfix">
@@ -246,7 +246,7 @@
     position: absolute;
     left: 0;
     right: 0;
-
+    top: 2.5vw;
   }
 
   .juan-wrapper {
@@ -256,20 +256,23 @@
   }
 
   .juan {
-    width: 60vw;
+    width: 66vw;
     border: 0 none;
   }
 
   .zhou {
-    width: 3.5vw;
+    width: 6.4vw;
     z-index: 5;
+    top: 3vw;
 
     &.left {
       position: relative;
-      margin-right: -.5vw;
+      margin-right: -4vw;
     }
     &.right {
-      margin-left: -.65vw;
+      margin-left: -5vw;
+      transform: rotateZ(180deg);
+      position: absolute;
     }
   }
 
